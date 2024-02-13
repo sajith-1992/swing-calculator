@@ -157,25 +157,45 @@ public class calculator implements ActionListener {
         {screen.setText(screen.getText()+"9");}
        }
        else if (e.getSource()==b4){
-           screen.setText(screen.getText()+"4");
-
-       } 
+        if(isoperatorPressed){
+            screen.setText("4");
+            isoperatorPressed=false;
+        } else
+        {screen.setText(screen.getText()+"4");}}
         else if (e.getSource()==b5){
-           screen.setText(screen.getText()+"5");
-       }
+            if(isoperatorPressed){
+                screen.setText("5");
+                isoperatorPressed=false;
+            } else
+            {screen.setText(screen.getText()+"5");}}
        else if (e.getSource()==b6){
-        screen.setText(screen.getText()+"6");
-       }
+        if(isoperatorPressed){
+            screen.setText("6");
+            isoperatorPressed=false;
+        } else
+        {screen.setText(screen.getText()+"6");}}
       
                
             else if (e.getSource()==b3){
-                screen.setText(screen.getText()+"3");
+                if(isoperatorPressed){
+                    screen.setText("3");
+                    isoperatorPressed=false;
+                } else
+                {screen.setText(screen.getText()+"3");}
             }
             else if (e.getSource()==b2){
-                screen.setText(screen.getText()+"2");
+                if(isoperatorPressed){
+                    screen.setText("2");
+                    isoperatorPressed=false;
+                } else
+                {screen.setText(screen.getText()+"2");}
             }
             else if (e.getSource()==b1){
-                screen.setText(screen.getText()+"1");
+                if(isoperatorPressed){
+                    screen.setText("1");
+                    isoperatorPressed=false;
+                } else
+                {screen.setText(screen.getText()+"1");}
             }
             else if (e.getSource()==clear){
                 screen.setText("");
