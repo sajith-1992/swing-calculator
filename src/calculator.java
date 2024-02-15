@@ -17,10 +17,16 @@ public class calculator implements ActionListener {
     JButton b6;
     JButton b3;
     JButton b2;
-    JButton b1,div,subtractionbutton,additionbutton;
+    JButton b1,div,subtractionbutton,additionbutton,equals;
     JButton zero;
     JButton clear;
-    String oldValString;
+
+    String sumoldValString;
+    String suboldValString;
+    String divoldvalString;
+
+    String newValue;
+
    
 
     JLabel screen;
@@ -109,6 +115,11 @@ public class calculator implements ActionListener {
         jf.add(div);
         div.addActionListener(this);
 
+
+        equals=new JButton("=");
+        equals.setBounds(230,320,50, 50);
+        jf.add(equals);
+        equals.addActionListener(this);
 
         subtractionbutton=new JButton("-");
         subtractionbutton.setBounds(230,180,50, 50);
@@ -205,19 +216,42 @@ public class calculator implements ActionListener {
             }
             else if (e.getSource()==additionbutton){
                 isoperatorPressed=true;
-               oldValString = screen.getText();
+              sumoldValString = screen.getText();
                
               
                 
             }
             else if (e.getSource()==subtractionbutton){
+                isoperatorPressed=true;
+                suboldValString = screen.getText();
                 
             }
             else if (e.getSource()==div){
+                isoperatorPressed=true;
+                suboldValString = screen.getText();
                 
             }
+            else if (e.getSource()== equals){
+                
+            newValue = screen.getText();
+             Float sumoldvalFloat = Float.parseFloat(sumoldValString);
+            Float suboldvalFloat = Float.parseFloat(sumoldValString);
+            Float divoldvalFloat = Float.parseFloat(sumoldValString);
+            Float newvalFloat = Float.parseFloat(newValue);
+           
+            Float old[]= { sumoldvalFloat ,suboldvalFloat,divoldvalFloat };
+
+            for(int i;i<3;i++){
+            {
+                    if(old[i=sumoldvalFloat])
+                    
+                }
+            }
+                  
+
+
       }
-    }
+    }}
     
         
        
