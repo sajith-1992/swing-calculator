@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class calculator implements ActionListener {
     boolean isoperatorPressed=false;
-    
+    boolean equalspressed = false;
     JButton b7;
     JButton b8;
     JButton b9;
@@ -20,6 +20,7 @@ public class calculator implements ActionListener {
     JButton b1,div,subtractionbutton,additionbutton,equals;
     JButton zero;
     JButton clear;
+    Float sum,sub, division;
 
     String sumoldValString;
     String suboldValString;
@@ -149,6 +150,11 @@ public class calculator implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==b7){
+        if(equalspressed){
+            screen.setText("");
+            equalspressed = false;
+        }    
+        
             if(isoperatorPressed){
                 screen.setText("7");
                 isoperatorPressed=false;
@@ -234,27 +240,45 @@ public class calculator implements ActionListener {
             else if (e.getSource()== equals){
                 
             newValue = screen.getText();
-             Float sumoldvalFloat = Float.parseFloat(sumoldValString);
+            Float sumoldvalFloat = Float.parseFloat(sumoldValString);
             Float suboldvalFloat = Float.parseFloat(sumoldValString);
             Float divoldvalFloat = Float.parseFloat(sumoldValString);
             Float newvalFloat = Float.parseFloat(newValue);
-           
-            Float old[]= { sumoldvalFloat ,suboldvalFloat,divoldvalFloat };
-
-            for(int i;i<3;i++){
-            {
-                    if(old[i=sumoldvalFloat])
-                    
-                }
+            System.out.println(sumoldvalFloat);
+            System.out.println(newvalFloat);
+            sub = suboldvalFloat - newvalFloat;
+            sum = suboldvalFloat + newvalFloat;
+            System.out.println(sum);
+            if(sum<0 || sum>0){
+                screen.setText(""+sum);
+                equalspressed = true;
             }
-                  
+            
+
+             
+
+        
+        }}}
+        /*else if (suboldvalFloat != 0){
+            Float sub = suboldvalFloat - newvalFloat;
+            screen.setText(""+ sub);
+            
+        }
+        else if (divoldvalFloat != 0){
+            Float div = divoldvalFloat /  newvalFloat;
+            screen.setText(""+ div);
+        }
+        else{
+            
+        }
+        }
+                
 
 
       }
-    }}
-    
+    }    
         
        
 
 
-    
+    */
