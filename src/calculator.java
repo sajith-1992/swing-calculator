@@ -20,13 +20,14 @@ public class calculator implements ActionListener {
     JButton b1,div,subtractionbutton,additionbutton,equals;
     JButton zero;
     JButton clear;
-    Float sum,sub, division;
+    Float sum;
+    int calculation;
 
-    String sumoldValString;
-    String suboldValString;
-    String divoldvalString;
+    Float sumoldValFloat, result;
+    Float suboldValFloat;
+    Float divoldvalFloat;
 
-    String newValue;
+    Float newValue;
 
    
 
@@ -39,7 +40,7 @@ public class calculator implements ActionListener {
 
         screen=new JLabel("");
         screen.setBounds(20,40,250,40);
-        screen.setBackground(Color.BLUE);
+        screen.setBackground(Color.green);
         screen.setOpaque(true);
         screen.setHorizontalAlignment(SwingConstants.RIGHT);
         jf.add(screen);
@@ -150,11 +151,8 @@ public class calculator implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==b7){
-        if(equalspressed){
-            screen.setText("");
-            equalspressed = false;
-        }    
-        
+      
+            
             if(isoperatorPressed){
                 screen.setText("7");
                 isoperatorPressed=false;
@@ -221,64 +219,62 @@ public class calculator implements ActionListener {
                 screen.setText(screen.getText()+"0");
             }
             else if (e.getSource()==additionbutton){
+              calculation = 1;
                 isoperatorPressed=true;
-              sumoldValString = screen.getText();
+              sumoldValFloat = Float.parseFloat(screen.getText());
                
               
                 
             }
             else if (e.getSource()==subtractionbutton){
+                calculation = 2;
                 isoperatorPressed=true;
-                suboldValString = screen.getText();
+                suboldValFloat = Float.parseFloat(screen.getText());
                 
             }
             else if (e.getSource()==div){
+                calculation = 3;
                 isoperatorPressed=true;
-                suboldValString = screen.getText();
+                divoldvalFloat= Float.parseFloat(screen.getText());
                 
             }
             else if (e.getSource()== equals){
+                newValue = Float.parseFloat(screen.getText());
                 
-            newValue = screen.getText();
-            Float sumoldvalFloat = Float.parseFloat(sumoldValString);
-            Float suboldvalFloat = Float.parseFloat(sumoldValString);
-            Float divoldvalFloat = Float.parseFloat(sumoldValString);
-            Float newvalFloat = Float.parseFloat(newValue);
-            System.out.println(sumoldvalFloat);
-            System.out.println(newvalFloat);
-            sub = suboldvalFloat - newvalFloat;
-            sum = suboldvalFloat + newvalFloat;
-            System.out.println(sum);
-            if(sum<0 || sum>0){
-                screen.setText(""+sum);
-                equalspressed = true;
-            }
-            
+                switch (calculation) {
+                    case 1:
+                     result = sumoldValFloat + newValue;
+                   
+                     equalspressed = true;
+                     break;
+                
+                    case 2:
+                      result = suboldValFloat - newValue;
+                    
+                      break;  
+                    case 3:   
+                    result = divoldvalFloat / newValue;
+                    break;
+                    
+                        
+                    }
+                    System.out.println(result);
+                      screen.setText(""+result);
+                      isoperatorPressed = true;
+                     
 
-             
 
-        
-        }}}
-        /*else if (suboldvalFloat != 0){
-            Float sub = suboldvalFloat - newvalFloat;
-            screen.setText(""+ sub);
+                    
+                }
             
-        }
-        else if (divoldvalFloat != 0){
-            Float div = divoldvalFloat /  newvalFloat;
-            screen.setText(""+ div);
-        }
-        else{
-            
-        }
         }
                 
 
 
       }
-    }    
+        
         
        
 
 
-    */
+    
